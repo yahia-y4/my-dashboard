@@ -3,6 +3,8 @@ import { AdminModule } from './admin/admin.module.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Admin } from './admin/entities/admin.entity.js';
 import { AuthModule } from './auth/auth.module.js';
+import { UserModule } from './user/user.module.js';
+import { User } from './user/entities/user.entity.js';
 
 @Module({
   imports: [
@@ -13,11 +15,12 @@ import { AuthModule } from './auth/auth.module.js';
       username: 'root',
       password: '',
       database: 'my_dashboard',
-      entities: [Admin],
+      entities: [Admin,User],
       synchronize: true,
     }),
     AuthModule,
     AdminModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
