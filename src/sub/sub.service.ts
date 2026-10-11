@@ -12,7 +12,6 @@ export class SubService {
     @InjectRepository(Admin) private adminRepo: Repository<Admin>,
   ) {}
   async create(data: CreateSubDto, admin_id: number) {
-    console.log(admin_id)
     const admin = await this.adminRepo.findOne({ where: { id: admin_id } });
     if (!admin) throw new NotFoundException('admin not found');
     const sub = this.subRepo.create({
@@ -21,5 +20,11 @@ export class SubService {
     });
     const savedSub = await this.subRepo.save(sub);
     return savedSub;
+  }
+  async getSubs(admin_id: number) {
+    const admin = await this.adminRepo.findOne({ where: { id: admin_id } });
+    if (!admin) throw new NotFoundException('admin not found');
+    const subs = await this.subRepo.find({ where: { admin_id: admin_id } });
+    return subs;
   }
 }
