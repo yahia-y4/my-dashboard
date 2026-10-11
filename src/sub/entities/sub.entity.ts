@@ -33,11 +33,11 @@ export class Sub {
   product_id: number;
 
   @ManyToOne(() => Admin, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'user_id' })
+  @JoinColumn({ name: 'admin_id' })
   admin: Admin;
 
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'admin_id' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @ManyToOne(() => Product, { onDelete: 'CASCADE' })
