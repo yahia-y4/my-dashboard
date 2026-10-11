@@ -21,4 +21,9 @@ export class ProductService {
     const sevedProduct = await this.productRepo.save(product);
     return sevedProduct;
   }
+
+  async getProducts(admin_id: number){
+    const products = await this.productRepo.find({where:{admin_id:admin_id}})
+    return products
+  }
 }
