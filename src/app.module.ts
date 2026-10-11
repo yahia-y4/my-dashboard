@@ -7,6 +7,8 @@ import { UserModule } from './user/user.module.js';
 import { User } from './user/entities/user.entity.js';
 import { ProductModule } from './product/product.module.js';
 import { Product } from './product/entities/product.entity.js';
+import { SubModule } from './sub/sub.module.js';
+import { Sub } from './sub/entities/sub.entity.js';
 
 @Module({
   imports: [
@@ -17,13 +19,14 @@ import { Product } from './product/entities/product.entity.js';
       // username: 'root',
       // password: '',
       database: 'my_dashboard',
-      entities: [Admin,User,Product],
+      entities: [Admin,User,Product,Sub],
       synchronize: true,
     }),
     AuthModule,
     AdminModule,
     UserModule,
     ProductModule,
+    SubModule,
   ],
   controllers: [],
   providers: [],
