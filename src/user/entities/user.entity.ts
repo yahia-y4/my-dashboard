@@ -38,7 +38,9 @@ export class User {
 
   @Column({ default: 'user' })
   role: string;
-
+  @Column({ name: 'admin_id' })
+  admin_id: number;
+  
   @ManyToOne(() => Admin, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'admin_id' })
   admin: Admin;

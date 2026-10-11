@@ -9,11 +9,11 @@ import { User } from './user/entities/user.entity.js';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
+      type: 'better-sqlite3',
+      // host: 'localhost',
+      // port: 3306,
+      // username: 'root',
+      // password: '',
       database: 'my_dashboard',
       entities: [Admin,User],
       synchronize: true,

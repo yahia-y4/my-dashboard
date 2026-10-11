@@ -19,9 +19,10 @@ export class UserService {
       admin,
     });
     const seveduser = await this.userRepo.save(user);
-    return {
-      ...seveduser,
-      admin_id: admin.id,
-    };
+    return seveduser
+  }
+  async getUsers( adminId: number){
+    const users = await this.userRepo.find({where:{admin:{id:adminId}}})
+    return users;
   }
 }
