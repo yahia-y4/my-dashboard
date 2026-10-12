@@ -4,9 +4,10 @@ import { SubController } from './sub.controller.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Sub } from './entities/sub.entity.js';
 import { Admin } from '../admin/entities/admin.entity.js';
+import { User } from '../user/entities/user.entity.js';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Sub,Admin])],
+  imports:[TypeOrmModule.forFeature([Sub,Admin,User])],
   controllers: [SubController],
   providers: [SubService],
 })

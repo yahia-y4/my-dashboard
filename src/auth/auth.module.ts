@@ -11,7 +11,7 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard.js';
   imports: [
     JwtModule.register({
       secret: 'mysecretkey',
-      signOptions: { expiresIn: '1d' },
+      signOptions: { expiresIn: '10d' },
     }),
     TypeOrmModule.forFeature([Admin]),
   ],
