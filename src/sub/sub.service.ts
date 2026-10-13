@@ -9,6 +9,7 @@ import { Sub } from './entities/sub.entity.js';
 import { Repository } from 'typeorm';
 import { Admin } from '../admin/entities/admin.entity.js';
 import { User } from '../user/entities/user.entity.js';
+import { UpdateSubDto } from './dto/update-sub.dto.js';
 
 @Injectable()
 export class SubService {
@@ -60,10 +61,15 @@ export class SubService {
     return {
       success: true,
       name: user.name,
-      fatherName:user.fatherName,
-      lastName:user.lastName,
-      NID:user.NID,
-      subscription: 'active',
+      userId:user.id,
     };
+  }
+  async updateSub(data:UpdateSubDto ,sub_id:number){
+    const sub = await this.subRepo.findOne({where:{id:sub_id}});
+    if(!sub) throw new NotFoundException("sub not found");
+    Object.assign(sub,data)
+    const updatedSub = await this.subRepo.save(sub);
+    return updatedSub;
+
   }
 }
